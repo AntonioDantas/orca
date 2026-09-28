@@ -34,5 +34,12 @@ export const EXACT_NODE_ENTRYPOINT_IDENTITIES: readonly {
     pattern: /(?:^|\/)node_modules\/@deepseek-ai\/dsh\/lib\/bin\.js$/,
     agent: 'dsh',
     processName: 'dsh'
+  },
+  // Why: Qwen Code's Windows launcher (qwen.cmd) runs `node …\cli-entry.js`, so the
+  // foreground process is node.exe; only the package/install path identifies it.
+  {
+    pattern: /(?:^|\/)(?:node_modules\/@qwen-code\/qwen-code|qwen-code\/lib)\/cli(?:-entry)?\.js$/,
+    agent: 'qwen-code',
+    processName: 'qwen'
   }
 ]
